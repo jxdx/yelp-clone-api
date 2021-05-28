@@ -6,6 +6,7 @@ namespace :restaurants do
   task add_restaurant: :environment do
     file = File.read('data/restaurants.jsonl')
     restaurants = JSONL.parse(file)
+    puts 'starting restaurant import'
     restaurants.each do |res|
       new_res = Restaurant.create(
         business_id: res['business_id'],
@@ -27,9 +28,10 @@ namespace :restaurants do
         cat = Category.find_or_create_by(name: cat)
         RestaurantCategory.create(category_id: cat.id, restaurant_id: new_res.id)
       end
+    rescue
+      puts "whoops something went wrong with #{new_res}"
     end
 
-  rescue
-    puts 'whoops something went wrong, moving on...'
+    puts 'completed restaurant import'
   end
 end
