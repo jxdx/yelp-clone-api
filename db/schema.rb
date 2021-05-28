@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_022034) do
+ActiveRecord::Schema.define(version: 2021_05_28_033740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurant_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_restaurant_categories_on_category_id"
+    t.index ["restaurant_id"], name: "index_restaurant_categories_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "business_id"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "latitude"
+    t.string "longitude"
+    t.float "stars"
+    t.integer "review_count"
+    t.integer "is_open"
+    t.json "restaurant_attributes"
+    t.json "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -23,4 +56,6 @@ ActiveRecord::Schema.define(version: 2021_05_28_022034) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "restaurant_categories", "categories"
+  add_foreign_key "restaurant_categories", "restaurants"
 end

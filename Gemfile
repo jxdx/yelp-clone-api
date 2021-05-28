@@ -56,3 +56,6 @@ gem 'bcrypt'
 
 # json web token
 gem 'jwt'
+
+# import json line files
+gem 'jsonl'
