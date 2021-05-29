@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+# You must run rake restaurants:add_restaurants and
+# rake users:add_user before running this task
+
 # Run with the following command: rake reviews:add_review
 namespace :reviews do
-  desc 'One time task that that adds restaurants'
+  desc 'One time task that that adds reviews'
   task add_reviews: :environment do
     file = File.read('data/reviews.jsonl')
     reviews = JSONL.parse(file)

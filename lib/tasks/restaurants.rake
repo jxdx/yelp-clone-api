@@ -3,7 +3,7 @@
 # Run with the following command: rake restaurants:add_restaurant
 namespace :restaurants do
   desc 'One time task that that adds restaurants'
-  task add_restaurant: :environment do
+  task add_restaurants: :environment do
     file = File.read('data/restaurants.jsonl')
     restaurants = JSONL.parse(file)
     puts 'starting restaurant import'

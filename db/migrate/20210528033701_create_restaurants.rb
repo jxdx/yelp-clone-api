@@ -17,5 +17,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    # search restaurants by business_id
+    add_index :restaurants, :business_id
   end
 end

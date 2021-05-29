@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_052436) do
     t.json "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_restaurants_on_business_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -58,15 +59,22 @@ ActiveRecord::Schema.define(version: 2021_05_28_052436) do
     t.integer "cool"
     t.string "text"
     t.string "date"
+    t.string "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["business_id", "user_id", "review_id"], name: "index_reviews_on_business_id_and_user_id_and_review_id"
+    t.index ["business_id", "review_id", "user_id"], name: "index_reviews_on_business_id_and_review_id_and_user_id", unique: true
+    t.index ["business_id"], name: "index_reviews_on_business_id"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.string "user_id"
+    t.integer "useful"
+    t.float "average_stars"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
