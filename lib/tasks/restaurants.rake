@@ -15,6 +15,7 @@ namespace :restaurants do
         city: res['city'],
         state: res['state'],
         postal_code: res['postal_code'],
+        country: res['country'],
         latitude: res['latitude'],
         longitude: res['longitude'],
         stars: res['stars'],

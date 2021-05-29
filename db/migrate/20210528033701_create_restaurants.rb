@@ -7,6 +7,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :state
       t.string :postal_code
+      t.string :country
       t.string :latitude
       t.string :longitude
       t.float :stars

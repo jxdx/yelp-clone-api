@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_052436) do
     t.string "city"
     t.string "state"
     t.string "postal_code"
+    t.string "country"
     t.string "latitude"
     t.string "longitude"
     t.float "stars"
