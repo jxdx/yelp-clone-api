@@ -44,8 +44,7 @@ you need to run the following tasks in the correct order.
 I deployed the API to AWS EC2 and RDS using Elastic Beanstalk. The server was up and running 
 and connecting to the database however, after adding a new 
 SECRET_KEY_BASE environment variable for JWT encoding the Elastic Beanstalk
-environment is not cooperating. I have been attempting to access the logs and 
-I'm also not able to access any logs.
+environment is not cooperating. At the moment I'm even able to access full logs.
 
 Due to time constraints I will have to move on from this and come back if I have time.
 
@@ -124,11 +123,13 @@ list all restaurants that belong to a given category.
 information for these users I decided to create seed without passwords to simply have data.
 If you want to create a review, or access any of the endpoints, you must create a new user and then 
 log in as that user first.
-5) I debated whether to add JWT token authentication, this takes up a far amount of time and JWT
+6) I didn't give users the ability to create restaurants. I decided all data should come from a verified
+source like Yelp to avoid creating fake restaurants in the real world.
+7) I debated whether to add JWT token authentication, this takes up a far amount of time and JWT
 is something that is fairly common and its easy to implement. However, I would never create a production
 API that didn't have JWT authentication or at least some kind of auth token security so I decided to implement it.
 This allows the API to be more stable and maintanable.
-4) For deployment and monitoring I decided to go with AWS elastic beanstalk. Since this is an assignment and
+8) For deployment and monitoring I decided to go with AWS elastic beanstalk. Since this is an assignment and
 I didn't want to spend too much time on it I could have deployed using a service like Heroku but I like 
 the monitoring capabilities better on AWS and the ability to create alerts.
 ```
