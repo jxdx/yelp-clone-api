@@ -31,7 +31,7 @@ RSpec.describe 'Restaurants API', type: :request do
     # make HTTP get request before each example
     before { get "/restaurants/#{restaurant.business_id}", params: {}, headers: headers }
 
-    it 'returns restaurants' do
+    it 'returns restaurant details including reviews' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json['restaurant']).not_to be_empty
       expect(json['restaurant']['categories']).not_to be_empty
