@@ -18,8 +18,8 @@ RSpec.describe 'Restaurants API', type: :request do
       # Note `json` is a custom helper to parse JSON responses
       expect(json['restaurants']).not_to be_empty
       expect(json['restaurants'].size).to eq(1)
-      expect(json['restaurants'][0]['categories']).not_to be_empty
-      expect(json['restaurants'][0]['reviews']).to eq('request restaurant details for reviews')
+      expect(json['restaurants'][0]['categories']).to be_nil
+      expect(json['restaurants'][0]['reviews']).to be_nil
     end
 
     it 'returns status code 200' do
