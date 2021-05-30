@@ -109,6 +109,26 @@ can be any string that you want to pass.
 http://localhost:3000/login?email=jxdxio@gmail.com&password=password
 ```
 
-* Notes:
+* Notes and Assumptions:
 ```
+Some of the design decisions I made are as follows:
+1) Since I'm only loading the data once and I don't don't anticipate any scalability issues
+at this point and time, and because it makes life quite easy to create relationships between restaurants,
+users, reviews and categories, I decided to go with a Postgresql database.
+2) This also allowed me to do text based queries quite easily when searching through the reviews for a supplied text.
+3) I created my own indexes and foreign keys using business_id, and review_id for the relationship between
+restaurants and reviews. I also joined users to reviews using user_id.
+4) I created a many to many relationship between categories and relationships so that I could easily
+list all restaurants that belong to a given category.
+5) I debated whether to allow seeded users the ability to create reviews however, since we don't store password 
+information for these users I decided to create seed without passwords to simply have data.
+If you want to create a review, or access any of the endpoints, you must create a new user and then 
+log in as that user first.
+5) I debated whether to add JWT token authentication, this takes up a far amount of time and JWT
+is something that is fairly common and its easy to implement. However, I would never create a production
+API that didn't have JWT authentication or at least some kind of auth token security so I decided to implement it.
+This allows the API to be more stable and maintanable.
+4) For deployment and monitoring I decided to go with AWS elastic beanstalk. Since this is an assignment and
+I didn't want to spend too much time on it I could have deployed using a service like Heroku but I like 
+the monitoring capabilities better on AWS and the ability to create alerts.
 ```
