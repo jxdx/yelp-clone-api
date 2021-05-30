@@ -78,8 +78,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: yelp-clone-api_production
+#   username: yelp-clone-api
+#   password: <%= ENV['YELP-CLONE-API_DATABASE_PASSWORD'] %>
 production:
-  <<: *default
-  database: yelp-clone-api_production
-  username: yelp-clone-api
-  password: <%= ENV['YELP-CLONE-API_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
