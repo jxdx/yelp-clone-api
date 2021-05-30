@@ -10,6 +10,7 @@ RSpec.describe 'Categories API', type: :request do
   let(:headers) { valid_headers }
 
   # Test suite for GET /categories
+  # I am not testing for the accuracy of the data returned, just that there is data being returned
   describe 'GET /categories' do
     # make HTTP get request before each example
     # before { get '/categories', params: {}, headers: headers }

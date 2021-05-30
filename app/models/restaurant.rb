@@ -7,4 +7,11 @@ class Restaurant < ApplicationRecord
 
   # Validations
   validates_presence_of :business_id, :name
+
+  def self.search(search_terms)
+    Restaurant
+      .joins(:reviews)
+      .includes(:reviews)
+      .where('reviews.text ILIKE ?', "%#{search_terms.downcase}%")
+  end
 end

@@ -51,7 +51,8 @@ module Serializers
     end
 
     def self.restaurant_reviews(restaurant)
-      restaurant.reviews.map do |review|
+      # order by latest reviews
+      restaurant.reviews.order(date: :desc).map do |review|
         {
           business_id: review.business_id,
           review_id: review.review_id,

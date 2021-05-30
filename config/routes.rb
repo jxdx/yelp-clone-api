@@ -9,4 +9,8 @@ Rails.application.routes.draw do
 
   # categories
   get 'categories', to: 'categories#index'
+
+  # reviews
+  get 'reviews', to: 'reviews#search'
+  post 'reviews', to: 'reviews#create'
 end

@@ -1,3 +1,6 @@
+# Given a category (Mexican, Burgers, Gastropubs, etc.), we want to list restaurants in that category sorted by most interesting.
+# You can define what "interesting" means.
+
 class CategoriesController < ApplicationController
   before_action :find_category
   # GET /categories
