@@ -4,9 +4,7 @@
 class ReviewsController < ApplicationController
   # GET /reviews?search_terms=fun times
   def search
-    if !review_params['search_terms']
-      return api_error('Missing Parameters', 400)
-    end
+    return api_error('Missing Parameters', 400) unless review_params['search_terms']
 
     restaurants = Restaurant.search(review_params['search_terms'])
     json_response(restaurants: Serializers::Restaurant.index(restaurants))

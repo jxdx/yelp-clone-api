@@ -8,6 +8,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/:business_id
   def show
+    return api_error('Restaurant not found') if @restaurant.nil?
+
     json_response(restaurant: Serializers::Restaurant.show(@restaurant))
   end
 

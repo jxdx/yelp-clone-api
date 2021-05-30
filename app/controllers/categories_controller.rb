@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
   # To get restaurants by category you need to pass the name parameter
   def index
     if category_params[:name]
+      return api_error('Category not found') if @category.nil?
+
       # Return restaurants for a given category sorted by
       # the restaurant with the most reviews and highest rating
       restaurants = @category.restaurants.order(review_count: :desc, stars: :desc)
