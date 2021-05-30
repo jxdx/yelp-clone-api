@@ -9,6 +9,11 @@
 5.2.4.6
 ```
 
+* Database version
+```
+Postgres 13.1
+```
+
 * Database creation
 ```
 rake db:create
@@ -24,7 +29,7 @@ rake db:migrate
 bundle exec rspec
 ```
 
-* Deployment instructions
+* Local Deployment instructions
 ```
 In order to seed the database with restaurants, reviews and users you need to fun the following tasks
 in the correct order.
@@ -32,6 +37,21 @@ in the correct order.
 2) rake restaurants:add_restaurants
 3) rake reviews:add_reviews
 4) start the server by running: rails s
+```
+
+* Production Deployment
+```
+I deployed to AWS EC2 and RDS using Elastic Beanstalk. The server is up and running and connecting to the database
+however, I have been attempting to simply add a new SECRET_KEY_BASE ENV variable for JWT encoding and the Elastic Beanstalk
+environment is now in a degraded state. I have been attempting to access the logs and I'm also not able to
+even view logs. The production URL is: Y2-env.eba-3efmssbg.us-west-2.elasticbeanstalk.com
+```
+
+* Monitoring
+```
+I would have liked to use Elastic Beanstalk logs, monitoring and alerts.
+I have also used Sentry and DataDog on other projects but because of time constraints
+I decided to use AWS.
 ```
 
 * Instructions
@@ -76,5 +96,6 @@ http://localhost:3000/login?email=jxdxio@gmail.com&password=password
 ```
 
 * Notes:
+```
 
 * ...
